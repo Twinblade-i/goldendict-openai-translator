@@ -1,6 +1,6 @@
 # GoldenDict-openai-translator
 
-结合OpenAI进行文本翻译的命令行翻译工具，主要作为GoldenDict翻译扩展
+结合 OpenAI 进行文本翻译的命令行翻译工具，主要作为 GoldenDict 翻译扩展
 
 ## Preface
 
@@ -98,3 +98,8 @@ D:\GoldenDict-ng\openai-translator-goldendict\openai.png
 ```
 
 ![goldendict setting](./images/goldendict.png)
+
+## Example
+
+- `LANGUAGE_RELATED = Chinese` 设置情况下对法语文本进行翻译的示例
+  - <img src="./images/French_translate.png" alt="French translation example" style="float: left; zoom: 67%;" />
