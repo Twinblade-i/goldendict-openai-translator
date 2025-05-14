@@ -14,6 +14,7 @@ import json
 import platform
 import configparser
 import openai
+import argparse
 from openai import OpenAI
 
 # ----------------------------------------------------------------------
@@ -79,10 +80,10 @@ def translate(text_to_translate, config):
     if len(config["LANGUAGE_RELATED"]) == 2:
         language_related_0 = config["LANGUAGE_RELATED"][0]
         language_related_1 = config["LANGUAGE_RELATED"][1]
-        message_content = f"Translate the input text from {language_related_0} to {language_related_1} or from {language_related_1} to {language_related_0}. Only output the translated text without quotes."
+        message_content = f"Translate the input text from {language_related_0} to {language_related_1} or from {language_related_1} to {language_related_0}. Only output the translated text result without other words."
     elif len(config["LANGUAGE_RELATED"]) == 1:
         language_related_0 = config["LANGUAGE_RELATED"][0]
-        message_content = f"Translate the input text to {language_related_0}. Only output the translated text without quotes."
+        message_content = f"Translate the input text to {language_related_0}. Only output the translated text result without other words."
     else:
         return "!! Error: Invalid language configuration in config.ini."
 
@@ -122,17 +123,36 @@ def translate(text_to_translate, config):
 
 
 def main():
+    if len(sys.argv) < 1:
+        print("!! Error: No input text provided.")
+        return
+
     # 读取配置文件
     config = load_config(initialization_file)
     if not config:
         print("!! Error: Failed to load configuration.")
         return
 
+    parser = argparse.ArgumentParser(description="OpenAI Translator for GoldenDict")
+    parser.add_argument(
+        "--LANGUAGE_RELATED",
+        nargs="?",
+        type=str,
+        help='1 or 2 kinds of languages, seperated by comma。 e.g."English, Chinese" or "Chinese"',
+    )
+    parser.add_argument("text", nargs="+", help="Text to translate")
+    args = parser.parse_args()
+    if args.LANGUAGE_RELATED:
+        config["LANGUAGE_RELATED"] = [
+            x.strip() for x in args.LANGUAGE_RELATED.split(",")
+        ]
+
     # print(config)
+    # print(args)
 
     # Goldendict 通过命令行参数传递要翻译的文本
-    if len(sys.argv) > 1:
-        text_to_translate = sys.argv[1]
+    if args.text:
+        text_to_translate = " ".join(args.text)
     else:
         print("!! Error: No input text provided.")
         return
