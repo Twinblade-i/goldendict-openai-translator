@@ -101,5 +101,6 @@ D:\GoldenDict-ng\openai-translator-goldendict\openai.png
 
 ## Example
 
-- `LANGUAGE_RELATED = Chinese` 设置情况下对法语文本进行翻译的示例
-  - <img src="./images/French_translate.png" alt="French translation example" style="float: left; zoom: 67%;" />
+`LANGUAGE_RELATED = Chinese` 设置情况下对法语文本进行翻译的示例
+
+<img src="./images/French_translate.png" alt="French translation example" style="float: left; zoom: 50%;" />
