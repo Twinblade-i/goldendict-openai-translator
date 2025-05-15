@@ -7,8 +7,9 @@
 命令行翻译工具，主要用于搭配 GoldenDict，特性如下：
 
 - 使用 openai 库，借助 OpenAI 进行文本翻译，可以在配置文件中手动指定使用的 Model、翻译相关的语言等
-  - 需要提供 API Key 和 Host，获取免费API可以参考 [chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free) 等
-
+  
+- 需要提供 API Key 和 Host，获取免费 API 可以参考 [chatanywhere/GPT_API_free](https://github.com/chatanywhere/GPT_API_free) 等
+  
 - 支持单向翻译和双向翻译
 
   - 单向翻译：将不同语言的原文本翻译成设置中指定的目标语言的文本
@@ -16,8 +17,9 @@
 
   > 两种翻译模式由配置文件中的 `LANGUAGE_RELATED` 条目或命令行中 `--LANGUAGE_RELATED` 可选选项控制，具体见后续说明
 
-- 兼容linux、windows
-  - 注意windows下官方GoldenDict不支持utf-8字符输出，可以使用非官方维护的GoldenDict，如 [goldendict-ng](https://github.com/xiaoyifang/goldendict-ng) 的最新版本；linux下没有官方版本没有此问题
+- 兼容 linux、windows
+  
+  - 注意 windows 下官方 GoldenDict 不支持 utf-8 字符输出，可以使用非官方维护的 GoldenDict，如 [goldendict-ng](https://github.com/xiaoyifang/goldendict-ng) 的最新版本；linux 下官方版本没有此问题
 
 ## Requirements
 
@@ -27,7 +29,7 @@ Python 3.5+ 以及 openai 库：
 pip install openai
 ```
 
-Ubuntu24.04+限制pip进行扩展包安装，可以使用：
+Ubuntu24.04+ 限制 pip 进行扩展包安装，可以使用：
 
 ```bash
 sudo apt-get install python3-openai
@@ -91,7 +93,7 @@ This morning Mike recommended me to read an article about ColorSpace on Desiring
   - 提供两个值，其中一个是源语言，另一个是目标语言，如  `LANGUAGE_RELATED = English, Chinese`
     - 此时该工具在两种语言之间进行双向翻译，具体的源/目标语言由 OpenAI 结合原文本进行判断
   - **更新v1.0：该配置可以在命令行中可选选项`--LAGUAGE_RELATED`中进行设置，命令行中的设置会覆盖配置文件的该项**
-    - `--LANGUAGE_RELATED` 后跟随的选项值说明与前面相同，但要被引号包裹，如`--LANGUAGE_RELATED "English, Chinese"`
+    - `--LANGUAGE_RELATED` 后跟随的选项值说明与前面相同，但要被引号包裹，如 `--LANGUAGE_RELATED "English, Chinese"`
 
 ### Goldendict集成
 
@@ -117,7 +119,7 @@ D:\GoldenDict-ng\openai-translator-goldendict\openai.png
 
 ## Example
 
-`LANGUAGE_RELATED = Chinese`或`--LANGUAGE_RELATED "Chinese"` 设置情况下对法语文本进行翻译的示例
+`LANGUAGE_RELATED = Chinese` 或 `--LANGUAGE_RELATED "Chinese"` 设置情况下对法语文本进行翻译的示例
 
 <img src="./images/French_translate.png" alt="French translation example" style="zoom:67%;" />
 
